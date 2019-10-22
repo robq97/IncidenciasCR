@@ -1,18 +1,23 @@
 <resources>
     <string name="app_name">Incidencias CR</string>
+    <string name="app_name_upper">INCIDENCIAS CR</string>
 
     //General
     <string name="img_gradient">gradient</string>
 
     //Start menu
-    <string name="app_name_upper">INCIDENCIAS CR</string>
+
     <string name="btn_iniciar_sesion">INICIAR SESION</string>
     <string name="btn_nueva_incidencia">NUEVA INCIDENCIA</string>
     <string name="btn_actualizacion_inciencia">ACTUALIZACIÓN DE \n INCIDENCIA</string>
     <string name="img_caution">caution</string>
 
     //Login
-
+    <string name="img_login">login</string>
+    <string name="txt_correo_electronico">Correo Electrónico</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_ingresar">Ingresar</string>
+    <string name="txt_nueva_cuenta">Nueva Cuenta</string>
 
     //New account
 
