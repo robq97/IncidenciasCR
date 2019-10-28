@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Login">
+    tools:context=".Menu">
 
     <ImageView
         android:id="@+id/img_gradient"
@@ -20,13 +20,14 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="335dp"
-        android:layout_height="542dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491">
+        app:layout_constraintVertical_bias="0.185">
 
         <TextView
             android:id="@+id/txt_title"
@@ -38,58 +39,49 @@
             android:textSize="32sp"
             app:fontFamily="sans-serif-medium" />
 
-        <ImageView
-            android:id="@+id/img_login"
-            android:layout_width="174dp"
-            android:layout_height="105dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:contentDescription="@string/img_login"
-            app:srcCompat="@drawable/login" />
-
-        <EditText
-            android:id="@+id/input_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#21070000"
-            android:ems="10"
-            android:hint="@string/txt_correo_electronico"
-            android:inputType="textEmailAddress"
-            android:textColor="#61070000" />
-
-        <EditText
-            android:id="@+id/input_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#21070000"
-            android:ems="10"
-            android:hint="@string/txt_password"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="false"
-            android:singleLine="false"
-            android:textColor="#61070000" />
-
         <Button
-            android:id="@+id/btn_ingresar"
+            android:id="@+id/btn_nueva_incidencia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/btn_redondo_light"
-            android:text="@string/txt_ingresar"
+            android:text="@string/txt_nueva_cuenta"
+            android:textAllCaps="false"
             android:textColor="#FCFCFC"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_nueva_cuenta"
+            android:id="@+id/btn_actualizacion_incidencia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
-            android:background="@drawable/btn_redondo_dark"
-            android:text="@string/txt_nueva_cuenta"
+            android:background="@drawable/btn_redondo_light"
+            android:enabled="false"
+            android:text="@string/txt_actualizacion_inciencia"
+            android:textAllCaps="false"
             android:textColor="#FCFCFC"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_cerrar_sesion"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn_redondo_orange"
+            android:enabled="false"
+            android:text="@string/txt_cerrar_sesion"
+            android:textAllCaps="false"
+            android:textColor="#FCFCFC"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/img_caution"
+            android:layout_width="209dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="65dp"
+            android:contentDescription="@string/img_caution"
+            app:srcCompat="@drawable/warning" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

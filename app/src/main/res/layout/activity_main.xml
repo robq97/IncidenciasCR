@@ -20,7 +20,8 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="335dp"
-        android:layout_height="542dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,37 +42,39 @@
         <Button
             android:id="@+id/btn_iniciar_sesion"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
-            android:background="#41B3A3"
+            android:background="@drawable/btn_redondo_light"
             android:text="@string/btn_iniciar_sesion"
             android:textAllCaps="false"
             android:textColor="#FCFCFC"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+
+            />
 
         <Button
-            android:id="@+id/btn_nueva_incidencia"
+            android:id="@+id/btn_nueva_incidencia_disabled"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
-            android:background="#1E000000"
+            android:background="@drawable/btn_redondo_grey"
             android:enabled="false"
-            android:text="@string/btn_nueva_incidencia"
+            android:text="@string/txt_nueva_incidencia"
             android:textAllCaps="false"
             android:textColor="#43050505"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/btn_actualizacion_incidencia"
+            android:id="@+id/btn_actualizacion_incidencia_disabled"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
-            android:background="#1E000000"
+            android:background="@drawable/btn_redondo_grey"
             android:enabled="false"
-            android:text="@string/btn_actualizacion_inciencia"
+            android:text="@string/txt_actualizacion_inciencia"
             android:textAllCaps="false"
             android:textColor="#43050505"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/img_caution"

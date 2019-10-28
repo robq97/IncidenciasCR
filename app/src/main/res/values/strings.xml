@@ -4,12 +4,12 @@
 
     //General
     <string name="img_gradient">gradient</string>
+    <string name="txt_nueva_incidencia">NUEVA INCIDENCIA</string>
+    <string name="txt_actualizacion_inciencia">ACTUALIZACIÓN DE \n INCIDENCIA</string>
 
     //Start menu
 
-    <string name="btn_iniciar_sesion">INICIAR SESION</string>
-    <string name="btn_nueva_incidencia">NUEVA INCIDENCIA</string>
-    <string name="btn_actualizacion_inciencia">ACTUALIZACIÓN DE \n INCIDENCIA</string>
+    <string name="btn_iniciar_sesion">INICIAR SESIÓN</string>
     <string name="img_caution">caution</string>
 
     //Login
@@ -17,15 +17,74 @@
     <string name="txt_correo_electronico">Correo Electrónico</string>
     <string name="txt_password">Contraseña</string>
     <string name="txt_ingresar">Ingresar</string>
-    <string name="txt_nueva_cuenta">Nueva Cuenta</string>
+    <string name="txt_nueva_cuenta">NUEVA CUENTA</string>
+    <string name="txt_login">Inicio de Sesión</string>
 
     //New account
+    <string name="txt_nombre">Nombre</string>
+    <string name="txt_primer_apellido">Primer Apellido</string>
+    <string name="txt_segundo_apellido">Segundo Apellido</string>
+    <string name="txt_cedula">Cédula</string>
+    <string name="txt_tel_cel">Tel/Cel</string>
+    <string name="txt_correo_electronico_nueva_cuenta">Correo Electrónico</string>
+    <string name="txt_provincia">Provincia</string>
+    <string name="txt_canton">Cantón</string>
+    <string name="txt_distrito">Distrito</string>
+    <string name="txt_direccion">Dirección</string>
+    <string name="txt_password_nueva_cuenta">Contraseña</string>
+    <string name="txt_confirmar_password_nueva_cuenta">Confirmar Contraseña</string>
+    <string name="txt_confirmar">Confirmar</string>
+    <string name="txt_registro">Registro</string>
+
+
+    <string-array name="Provincia">
+        <item>San Jose</item>
+        <item>Alajuela</item>
+        <item>Cartago</item>
+        <item>Heredia</item>
+        <item>Guanacaste</item>
+        <item>Puntarenas</item>
+        <item>Limón</item>
+    </string-array>
+
+    <string-array name="Canton">
+        <item>Acosta</item>
+        <item>Alajuelita</item>
+        <item>Aserri</item>
+        <item>Desampakistan</item>
+        <item>Curridabat</item>
+        <item>Dota</item>
+        <item>Goicoechea</item>
+        <item>León Cortés Castro</item>
+        <item>Montes de Oca</item>
+        <item>Mora</item>
+        <item>Moravia</item>
+        <item>Puriscal</item>
+        <item>San José</item>
+        <item>Tarrazú</item>
+        <item>Turrubares</item>
+        <item>Vázquez de Coronado</item>
+        <item>Escazú</item>
+    </string-array>
+
+    <string-array name="Distrito">
+        <item>Carmen</item>
+        <item>Merced</item>
+        <item>Hospital</item>
+        <item>Catedral</item>
+        <item>Zapote</item>
+        <item>La Uruca</item>
+        <item>Pavas</item>
+    </string-array>
 
 
     //Confirmation code
 
 
     //Menu
+    <string name="txt_cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="txt_menu">Menú Principal</string>
+
 
 
     //New incidence
