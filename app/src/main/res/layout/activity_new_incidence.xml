@@ -204,9 +204,15 @@
                 android:layout_height="47dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/btn_redondo_orange"
                 android:text="@string/txt_agregar_imagen"
                 android:textColor="@android:color/white" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="254dp" />
         </LinearLayout>
 
     </LinearLayout>
