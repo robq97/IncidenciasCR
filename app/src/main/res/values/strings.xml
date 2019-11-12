@@ -78,13 +78,16 @@
     </string-array>
 
 
-    //Confirmation code
+    //Account Activation
+    <string name="txt_activacion">Ingrese el código de activación enviado a su email.</string>
+    <string name="txt_codigo">Código</string>
+    <string name="img_correo">Correo</string>
+
 
 
     //Menu
     <string name="txt_cerrar_sesion">CERRAR SESIÓN</string>
     <string name="txt_menu">Menú Principal</string>
-
 
 
     //New incidence

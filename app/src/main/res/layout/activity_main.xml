@@ -43,7 +43,7 @@
             android:id="@+id/btn_iniciar_sesion"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/btn_redondo_light"
             android:text="@string/btn_iniciar_sesion"
             android:textAllCaps="false"

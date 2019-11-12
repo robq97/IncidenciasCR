@@ -43,9 +43,9 @@
             android:id="@+id/btn_nueva_incidencia"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/btn_redondo_light"
-            android:text="@string/txt_nueva_cuenta"
+            android:text="@string/txt_nueva_incidencia"
             android:textAllCaps="false"
             android:textColor="#FCFCFC"
             android:textSize="18sp" />
