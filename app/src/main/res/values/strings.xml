@@ -6,11 +6,13 @@
     <string name="img_gradient">gradient</string>
     <string name="txt_nueva_incidencia">NUEVA INCIDENCIA</string>
     <string name="txt_actualizacion_inciencia">ACTUALIZACIÓN DE \n INCIDENCIA</string>
+    <string name="txt_confirmar">Confirmar</string>
 
     //Start menu
 
     <string name="btn_iniciar_sesion">INICIAR SESIÓN</string>
     <string name="img_caution">caution</string>
+    <string name="txt_menu">Menú</string>
 
     //Login
     <string name="img_login">login</string>
@@ -27,16 +29,14 @@
     <string name="txt_cedula">Cédula</string>
     <string name="txt_tel_cel">Tel/Cel</string>
     <string name="txt_correo_electronico_nueva_cuenta">Correo Electrónico</string>
-    <string name="txt_provincia">Provincia</string>
-    <string name="txt_canton">Cantón</string>
-    <string name="txt_distrito">Distrito</string>
     <string name="txt_direccion">Dirección</string>
     <string name="txt_password_nueva_cuenta">Contraseña</string>
     <string name="txt_confirmar_password_nueva_cuenta">Confirmar Contraseña</string>
-    <string name="txt_confirmar">Confirmar</string>
+
     <string name="txt_registro">Registro</string>
 
-
+    //Address
+    <string name="txt_provincia">Provincia</string>
     <string-array name="Provincia">
         <item>San Jose</item>
         <item>Alajuela</item>
@@ -47,6 +47,7 @@
         <item>Limón</item>
     </string-array>
 
+    <string name="txt_canton">Cantón</string>
     <string-array name="Canton">
         <item>Acosta</item>
         <item>Alajuelita</item>
@@ -67,6 +68,7 @@
         <item>Escazú</item>
     </string-array>
 
+    <string name="txt_distrito">Distrito</string>
     <string-array name="Distrito">
         <item>Carmen</item>
         <item>Merced</item>
@@ -84,14 +86,31 @@
     <string name="img_correo">Correo</string>
 
 
-
     //Menu
     <string name="txt_cerrar_sesion">CERRAR SESIÓN</string>
-    <string name="txt_menu">Menú Principal</string>
 
 
     //New incidence
+    <string name="txt_categoria">Categoría</string>
+    <string name="txt_entidad">Entidad</string>
+    <string name="txt_detalle">Detalle</string>
+    <string name="txt_agregar_imagen">Agregar imagen</string>
 
+    <string-array name="Categoria">
+        <item>Carretera</item>
+        <item>Cera</item>
+        <item>Señalizacion</item>
+        <item>Obstrucción</item>
+        <item>Acceso bloqueado</item>
+    </string-array>
+
+    <string-array name="Entidad">
+        <item>Municipalidad</item>
+        <item>Gubernamental</item>
+        <item>Cantón</item>
+        <item>Privada</item>
+        <item>Otra</item>
+    </string-array>
 
     //Incidence update
 
