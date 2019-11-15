@@ -10,6 +10,7 @@ import android.widget.Button;
 public class Menu extends AppCompatActivity {
 
     private Button button;
+    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,25 @@ public class Menu extends AppCompatActivity {
                 openActivation();
             }
         });
+
+        /*button = (Button) findViewById(R.id.btn_actualizacion_incidencia);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateIncidence();
+            }
+        });*/
+
+
     }
 
     public void openActivation(){
         Intent intent = new Intent(this, AccountActivation.class);
+        startActivity(intent);
+    }
+
+    public void openUpdateIncidence(){
+        Intent intent = new Intent(this, UpdateIncidence.class);
         startActivity(intent);
     }
 }
