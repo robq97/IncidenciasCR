@@ -21,7 +21,7 @@
     <LinearLayout
         android:layout_width="382dp"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -261,8 +261,7 @@
                 android:ems="10"
                 android:hint="@string/txt_confirmar_password_nueva_cuenta"
                 android:inputType="textPassword"
-                android:textColor="#61070000"
-                />
+                android:textColor="#61070000" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -280,8 +279,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.375"
-                />
+                app:layout_constraintVertical_bias="0.375" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
