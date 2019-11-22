@@ -209,10 +209,17 @@
                 android:text="@string/txt_agregar_imagen"
                 android:textColor="@android:color/white" />
 
+            <ImageView
+                android:id="@+id/img_preview"
+                android:layout_width="106dp"
+                android:layout_height="78dp"
+                android:layout_gravity="center" />
+
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
-                android:layout_height="254dp" />
+                android:layout_height="254dp"
+                android:layout_marginTop="15dp" />
         </LinearLayout>
 
     </LinearLayout>

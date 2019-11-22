@@ -1,13 +1,16 @@
 package com.project.incidenciascr;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -25,15 +28,16 @@ import static android.media.MediaRecorder.VideoSource.CAMERA;
 public class NewIncidence extends AppCompatActivity {
 
     private Button button;
-    GoogleMap map;
+    Integer REQUEST_CAMERA=1, SELECT_FILE=0;
+    ImageView imagePreview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_incidence);
 
+        imagePreview = (ImageView) findViewById(R.id.img_preview);
         button = (Button) findViewById(R.id.btn_agregar_img);
-        GoogleMap map;
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +47,8 @@ public class NewIncidence extends AppCompatActivity {
 
         });
     }
+
+
 
     private void showDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
@@ -67,46 +73,34 @@ public class NewIncidence extends AppCompatActivity {
         pictureDialog.show();
     }
 
-    public void fotoGaleria() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-
-        //startActivityForResult(galleryIntent, GALLERY);
+    public void fotoCamara(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_CAMERA);
     }
 
-    private void fotoCamara() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA);
+    public void fotoGaleria() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent.createChooser(galleryIntent, "Seleccione una foto"), SELECT_FILE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        /*super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
-            return;
-        }
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    String path = saveImage(bitmap);
-                    Toast.makeText(this, "Image Saved!", Toast.LENGTH_SHORT).show();
-                    imageview.setImageBitmap(bitmap);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
+            if (requestCode == REQUEST_CAMERA) {
+
+                Bundle bundle = data.getExtras();
+                final Bitmap bmp = (Bitmap) bundle.get("data");
+                imagePreview.setImageBitmap(bmp);
+
+            } else if (requestCode == SELECT_FILE) {
+                Uri selectedImageUrl = data.getData();
+                imagePreview.setImageURI(selectedImageUrl);
+
             }
-
-        } else if (requestCode == CAMERA) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageview.setImageBitmap(thumbnail);
-            saveImage(thumbnail);
-            Toast.makeText(this, "Image Saved!", Toast.LENGTH_SHORT).show();
-        }*/
+        }
     }
 }
