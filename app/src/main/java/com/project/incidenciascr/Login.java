@@ -39,10 +39,16 @@ public class Login extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View v) {
+
+              //string que valida correo con expresiones regulares
+              //espera un set de caracteres en las primeras llaves, luego un @
+              //luego otro set de caracteres, luego un punto, y luego otro set de caracteres
               String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
                       "\\@" +
                       "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                       ")+";
+
+              //se agarra lo que el usuario haya introducido en el campo y se convierte a un string
               String mail = email.getText().toString();
               Matcher verifica = Pattern.compile(verificaEmail).matcher(mail);
               if(verifica.matches()){

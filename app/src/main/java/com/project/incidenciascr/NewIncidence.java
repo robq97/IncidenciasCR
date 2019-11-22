@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.graphics.Bitmap;
@@ -30,6 +31,7 @@ public class NewIncidence extends AppCompatActivity {
     private Button button;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
     ImageView imagePreview;
+    private EditText direccion, detalle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,24 @@ public class NewIncidence extends AppCompatActivity {
 
         imagePreview = (ImageView) findViewById(R.id.img_preview);
         button = (Button) findViewById(R.id.btn_agregar_img);
+        direccion = (EditText)findViewById(R.id.txt_direccion);
+        detalle = (EditText)findViewById(R.id.input_detalle);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                String dir = direccion.getText().toString();
+                String det = detalle.getText().toString();
+                if(!dir.isEmpty()){
+                    if(!det.isEmpty()){
+                        showDialog();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Por favor ingrese el detalle del incidente", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Por favor ingrese la direccion del incidente", Toast.LENGTH_LONG).show();
+
+                }
             }
 
         });
