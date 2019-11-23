@@ -6,7 +6,6 @@ import android.widget.Spinner;
 import android.text.TextUtils;
 import android.widget.Toast;
 import android.content.ContentValues;
-import android.database.Cursor;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
