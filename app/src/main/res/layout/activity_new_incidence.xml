@@ -209,6 +209,16 @@
                 android:text="@string/txt_agregar_imagen"
                 android:textColor="@android:color/white" />
 
+            <Button
+                android:id="@+id/btn_nva_inc"
+                android:layout_width="283dp"
+                android:layout_height="47dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_redondo_orange"
+                android:layout_marginBottom="25dp"
+                android:textColor="@android:color/white"
+                android:text="Nueva incidencia" />
+
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"

@@ -28,7 +28,7 @@ import static android.media.MediaRecorder.VideoSource.CAMERA;
 
 public class NewIncidence extends AppCompatActivity {
 
-    private Button button;
+    private Button button, btn_nva_inc;
     private Spinner spinner_categoria, spinner_entidad, spinner_provincias,
             spinner_cantones, spinner_distritos;
     private EditText txt_direccion, input_detalle;
@@ -40,6 +40,8 @@ public class NewIncidence extends AppCompatActivity {
         setContentView(R.layout.activity_new_incidence);
 
         button = (Button) findViewById(R.id.btn_agregar_img);
+        btn_nva_inc = (Button) findViewById(R.id.btn_nva_inc);
+
         GoogleMap map;
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +50,13 @@ public class NewIncidence extends AppCompatActivity {
                 showDialog();
             }
 
+        });
+
+        btn_nva_inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarIncidencia(v);
+            }
         });
 
         spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
