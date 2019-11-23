@@ -30,9 +30,10 @@ public class BDConexion extends SQLiteOpenHelper {
                 "provincia text not null, canton text not null, distrito text not null, direccion text," +
                 " detalle text)");
 
+        /*
         db.execSQL("CREATE TABLE Cuenta_Incidencia(cedula int primary key, id_incidencia int primary key, " +
                 "FOREIGN KEY (cedula) REFERENCES Usuario(cedula), FOREIGN KEY (id_incidencia) REFERENCES Incidencia(id))");
-
+        */
 
 
     }

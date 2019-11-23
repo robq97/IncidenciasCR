@@ -23,6 +23,8 @@ public class Login extends AppCompatActivity {
 
     private EditText input_email, input_password;
 
+    private Button btn_ingresar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +87,18 @@ public class Login extends AppCompatActivity {
 
             return true;
         }
+        input_email = (EditText) findViewById(R.id.input_email);
+        input_password = (EditText) findViewById(R.id.input_password);
+
+        btn_ingresar = (Button) findViewById(R.id.btn_ingresar);
+
+        btn_ingresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logInCheckBD(view);
+            }
+        });
+
 
     }
 
@@ -102,7 +116,7 @@ public class Login extends AppCompatActivity {
             //validar si campos están llenos
             if(!TextUtils.isEmpty(input_email.getText().toString()) || !TextUtils.isEmpty(input_password.getText().toString()) ) {
 
-                Cursor fila = bd.rawQuery("SELECT * FROM Cuenta WHERE correo_electronico =" + input_email.getText().toString(), null);
+                Cursor fila = bd.rawQuery("SELECT * FROM Cuenta WHERE correo_electronico =?", new String[] {input_email.getText().toString()});
 
                 if(input_password.getText().toString() == fila.getString(10)) {
                     return true;
