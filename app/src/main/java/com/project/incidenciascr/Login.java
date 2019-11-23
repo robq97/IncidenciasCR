@@ -32,6 +32,8 @@ public class Login extends AppCompatActivity {
         email = (EditText)findViewById(R.id.input_email);
         password = (EditText)findViewById(R.id.input_password);
         btnIngresar = (Button)findViewById(R.id.btn_ingresar);
+        input_email = (EditText) findViewById(R.id.input_email);
+        input_password = (EditText) findViewById(R.id.input_password);
 
 
         btnNuevaCuenta.setOnClickListener(new View.OnClickListener() {
@@ -83,9 +85,6 @@ public class Login extends AppCompatActivity {
 
             return true;
         }
-
-        input_email = (EditText) findViewById(R.id.input_email);
-        input_password = (EditText) findViewById(R.id.input_password);
 
     }
 

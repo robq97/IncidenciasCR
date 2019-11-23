@@ -18,8 +18,8 @@ public class UpdateIncidence extends AppCompatActivity {
 
          list = (ListView)findViewById(R.id.list_incidentes);
 
-         CustomAdapter customAdapter = new CustomAdapter();
-         list.setAdapter(customAdapter);
+         //CustomAdapter customAdapter = new CustomAdapter();
+         //list.setAdapter(customAdapter);
 
     }
 

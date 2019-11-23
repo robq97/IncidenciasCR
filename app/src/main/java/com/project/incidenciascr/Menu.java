@@ -25,13 +25,13 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        /*button = (Button) findViewById(R.id.btn_actualizacion_incidencia);
+        button = (Button) findViewById(R.id.btn_actualizacion_incidencia);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openUpdateIncidence();
             }
-        });*/
+        });
 
 
     }
