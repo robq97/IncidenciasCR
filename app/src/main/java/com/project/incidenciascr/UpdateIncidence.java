@@ -22,4 +22,8 @@ public class UpdateIncidence extends AppCompatActivity {
          list.setAdapter(customAdapter);
 
     }
+
+    private void updateIncididente() {
+
+    }
 }
