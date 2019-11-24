@@ -37,6 +37,19 @@ public class Login extends AppCompatActivity {
         input_email = (EditText) findViewById(R.id.input_email);
         input_password = (EditText) findViewById(R.id.input_password);
 
+        input_email = (EditText) findViewById(R.id.input_email);
+        input_password = (EditText) findViewById(R.id.input_password);
+
+        btn_ingresar = (Button) findViewById(R.id.btn_ingresar);
+
+        btn_ingresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logInCheckBD(view);
+            }
+        });
+
+
 
         btnNuevaCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +100,6 @@ public class Login extends AppCompatActivity {
 
             return true;
         }
-        input_email = (EditText) findViewById(R.id.input_email);
-        input_password = (EditText) findViewById(R.id.input_password);
-
-        btn_ingresar = (Button) findViewById(R.id.btn_ingresar);
-
-        btn_ingresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logInCheckBD(view);
-            }
-        });
 
 
     }

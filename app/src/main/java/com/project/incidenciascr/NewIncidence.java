@@ -34,7 +34,6 @@ import static android.media.MediaRecorder.VideoSource.CAMERA;
 
 public class NewIncidence extends AppCompatActivity {
 
-    private Button button;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
     ImageView imagePreview;
     private EditText direccion, detalle;

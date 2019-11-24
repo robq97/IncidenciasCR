@@ -83,7 +83,9 @@
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
             android:contentDescription="@string/img_caution"
-            app:srcCompat="@drawable/warning" />
+            app:srcCompat="@drawable/warning"
+            android:visibility="invisible"
+            />
 
     </LinearLayout>
 
