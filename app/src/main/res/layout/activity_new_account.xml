@@ -220,8 +220,8 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="#21070000"
                     android:ems="10"
+                    android:hint="@string/txt_direccion"
                     android:inputType="textPersonName"
-                    android:text="@string/txt_direccion"
                     android:textColor="#61070000" />
             </LinearLayout>
         </LinearLayout>

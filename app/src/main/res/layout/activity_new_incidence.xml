@@ -167,8 +167,8 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="#21070000"
                     android:ems="10"
+                    android:hint="@string/txt_direccion"
                     android:inputType="textPersonName"
-                    android:text="@string/txt_direccion"
                     android:textColor="#61070000" />
             </LinearLayout>
         </LinearLayout>
@@ -214,15 +214,17 @@
                 android:layout_width="106dp"
                 android:layout_height="78dp"
                 android:layout_gravity="center" />
+
             <Button
                 android:id="@+id/btn_nva_inc"
                 android:layout_width="283dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:background="@drawable/btn_redondo_orange"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
-                android:textColor="@android:color/white"
-                android:text="Nueva incidencia" />
+                android:background="@drawable/btn_redondo_orange"
+                android:text="Nueva incidencia"
+                android:textColor="@android:color/white" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
