@@ -14,9 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateIncidence"></activity>
-        <activity android:name=".NewIncidence" />
-        <activity android:name=".AccountActivation" />
+        <activity
+            android:name=".UpdateIncidence"
+            android:label="@string/txt_actualizar_incidencia"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NewIncidence"
+            android:label="@string/txt_nueva_incidencia"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AccountActivation"
+            android:label="@string/txt_activacion"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Menu"
             android:label="@string/txt_menu"
