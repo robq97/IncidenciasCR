@@ -97,7 +97,8 @@
                 android:ems="10"
                 android:hint="@string/txt_cedula"
                 android:inputType="number"
-                android:textColor="#61070000" />
+                android:textColor="#61070000"
+                android:maxLength="9"/>
 
             <EditText
                 android:id="@+id/input_tel_cel"
@@ -109,7 +110,8 @@
                 android:ems="10"
                 android:hint="@string/txt_tel_cel"
                 android:inputType="phone"
-                android:textColor="#61070000" />
+                android:textColor="#61070000"
+                android:maxLength="8"/>
         </LinearLayout>
 
         <LinearLayout

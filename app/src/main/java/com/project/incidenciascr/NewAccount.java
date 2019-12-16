@@ -98,6 +98,35 @@ public class NewAccount extends AppCompatActivity {
             }
     }
 
+    private boolean phoneCheck(){
+        String phone = input_tel_cel.getText().toString();
+        char first = phone.charAt(0);
+        if (phone.length() == 8){
+            if (first == '2' || first == '6' || first == '7'|| first == '8'|| first == '5'){
+                return true;
+            } else {
+                Toast.makeText(getApplicationContext(), "Por favor ingrese un número de teléfono valido.", Toast.LENGTH_LONG).show();
+                input_tel_cel.setText("");
+                return false;
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Por favor ingrese un número de teléfono valido.", Toast.LENGTH_LONG).show();
+            input_tel_cel.setText("");
+            return false;
+        }
+    }
+
+    private boolean identificationCheck(){
+        String cedula =  input_cedula.getText().toString();
+        if (cedula.length() == 9){
+            return true;
+        }else{
+            Toast.makeText(getApplicationContext(), "Por favor ingrese un número de cédula valido.", Toast.LENGTH_LONG).show();
+            input_cedula.setText("");
+            return false;
+        }
+    }
+
     private void nuevaCuenta(View v) {
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
         SQLiteDatabase bd = cnn.getWritableDatabase();
@@ -111,37 +140,44 @@ public class NewAccount extends AppCompatActivity {
                     !TextUtils.isEmpty(input_cedula.getText().toString()) ||
                     !TextUtils.isEmpty(input_tel_cel.getText().toString())
             ) {
+                //valida si el email es valido
                 if (emailCheck()){
-                    //validar si contraseñas en blanco, y luego si son iguales
-                    if(!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
-                        if(passwordMatch()) {
+                    //valida si el tel/cel es valido
+                    if (phoneCheck()){
+                        //valida si se ingresa un numero de cedula valido
+                        if (identificationCheck()){
+                            //validar si contraseñas en blanco, y luego si son iguales
+                            if(!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
+                                if(passwordMatch()) {
 
-                            valores.put("nombre", input_nombre.getText().toString());
-                            valores.put("primer_apellido", input_primer_apellido.getText().toString());
-                            valores.put("segundo_apellido", input_segundo_apellido.getText().toString());
-                            valores.put("cedula", input_cedula.getText().toString());
-                            valores.put("tel_cel", input_tel_cel.getText().toString());
-                            valores.put("correo_electronico", input_email.getText().toString());
-                            valores.put("clave", input_password_nueva_cuenta.getText().toString());
+                                    valores.put("nombre", input_nombre.getText().toString());
+                                    valores.put("primer_apellido", input_primer_apellido.getText().toString());
+                                    valores.put("segundo_apellido", input_segundo_apellido.getText().toString());
+                                    valores.put("cedula", input_cedula.getText().toString());
+                                    valores.put("tel_cel", input_tel_cel.getText().toString());
+                                    valores.put("correo_electronico", input_email.getText().toString());
+                                    valores.put("clave", input_password_nueva_cuenta.getText().toString());
 
-                            valores.put("provincia", spinner_provincias.getSelectedItem().toString());
-                            valores.put("canton", spinner_cantones.getSelectedItem().toString());
-                            valores.put("distrito", spinner_distritos.getSelectedItem().toString());
+                                    valores.put("provincia", spinner_provincias.getSelectedItem().toString());
+                                    valores.put("canton", spinner_cantones.getSelectedItem().toString());
+                                    valores.put("distrito", spinner_distritos.getSelectedItem().toString());
 
-                            if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
-                                valores.put("direccion", txt_direccion.getText().toString());
+                                    if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
+                                        valores.put("direccion", txt_direccion.getText().toString());
+                                    }
+
+                                    bd.insert("Cuenta", null, valores);
+
+                                    bd.close();
+
+                                    Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
+                                    dialogBox();
+                                } else {
+                                    Toast.makeText(this, "Contraseñas no coinciden.", Toast.LENGTH_LONG).show();
+                                    input_password_nueva_cuenta.setText("");
+                                    input_password_nueva_cuenta_confirmacion.setText("");
+                                }
                             }
-
-                            bd.insert("Cuenta", null, valores);
-
-                            bd.close();
-
-                            Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
-                            dialogBox();
-                        } else {
-                            Toast.makeText(this, "Contraseñas no coinciden.", Toast.LENGTH_LONG).show();
-                            input_password_nueva_cuenta.setText("");
-                            input_password_nueva_cuenta_confirmacion.setText("");
                         }
                     }
                 }
@@ -149,13 +185,13 @@ public class NewAccount extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "A excepción de su dirección, debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
             }
-
+            /*
             input_nombre.setText("");
             input_primer_apellido.setText("");
             input_segundo_apellido.setText("");
-            input_cedula.setText("");
-            input_tel_cel.setText("");
             txt_direccion.setText("");
+
+             */
         }
         catch (Exception ex) {
 
