@@ -34,8 +34,6 @@ public class BDConexion extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Cuenta_Incidencia(cedula int primary key, id_incidencia int primary key, " +
                 "FOREIGN KEY (cedula) REFERENCES Usuario(cedula), FOREIGN KEY (id_incidencia) REFERENCES Incidencia(id))");
         */
-
-
     }
 
     @Override

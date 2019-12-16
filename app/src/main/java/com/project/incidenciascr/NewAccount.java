@@ -24,7 +24,6 @@ public class NewAccount extends AppCompatActivity {
     private Button button;
     private EditText nombre,primerApellido, segundoApellido, cedula, telefono,
     correo, direccion, password, confirmaPassword;
-
     private EditText input_nombre, input_primer_apellido, input_segundo_apellido, input_cedula, input_tel_cel, input_email,
             input_password_nueva_cuenta, input_password_nueva_cuenta_confirmacion, txt_direccion;
     private Spinner spinner_provincias, spinner_cantones, spinner_distritos;
@@ -204,7 +203,6 @@ public class NewAccount extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "A excepción de su dirección, debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
                 }
-
             }
 
             input_nombre.setText("");
@@ -216,9 +214,7 @@ public class NewAccount extends AppCompatActivity {
             input_password_nueva_cuenta.setText("");
             input_password_nueva_cuenta_confirmacion.setText("");
             txt_direccion.setText("");
-
         }
-
         catch (Exception ex) {
             Toast.makeText(this, "Please end my life.", Toast.LENGTH_LONG).show();
         }

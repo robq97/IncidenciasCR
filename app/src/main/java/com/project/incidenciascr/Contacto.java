@@ -2,9 +2,8 @@ package com.project.incidenciascr;
 
 public class Contacto {
 
-    private int cedula;
+    private int cedula, telefono;
     private String nombre, primerApellido, segundoApellido, correo, direccion, password;
-    private int telefono;
 
     public Contacto() {
     }
@@ -80,7 +79,6 @@ public class Contacto {
     public int getTelefono() {
         return telefono;
     }
-
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;

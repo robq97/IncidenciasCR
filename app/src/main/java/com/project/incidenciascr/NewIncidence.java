@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,7 +16,6 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.widget.EditText;
 import android.database.sqlite.SQLiteDatabase;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,8 +46,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import static android.media.MediaRecorder.VideoSource.CAMERA;
-
-
 
 public class NewIncidence extends AppCompatActivity {
 
@@ -102,7 +98,6 @@ public class NewIncidence extends AppCompatActivity {
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Por favor ingrese la direccion del incidente", Toast.LENGTH_LONG).show();
-
                 }
             }
 
@@ -122,9 +117,6 @@ public class NewIncidence extends AppCompatActivity {
             }
         });
 
-
-
-
         spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
         spinner_entidad = (Spinner) findViewById(R.id.spinner_entidad);
         spinner_provincias = (Spinner) findViewById(R.id.spinner_provincias);
@@ -141,8 +133,6 @@ public class NewIncidence extends AppCompatActivity {
         intent.putExtra("Longitude", longitude);
         startActivity(intent);
     }
-
-
 
     private void showDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
@@ -185,7 +175,6 @@ public class NewIncidence extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
 
             if (requestCode == REQUEST_CAMERA) {
-
                 Bundle bundle = data.getExtras();
                 final Bitmap bmp = (Bitmap) bundle.get("data");
                 imagePreview.setImageBitmap(bmp);
@@ -193,7 +182,6 @@ public class NewIncidence extends AppCompatActivity {
             } else if (requestCode == SELECT_FILE) {
                 Uri selectedImageUrl = data.getData();
                 imagePreview.setImageURI(selectedImageUrl);
-
             }
         }
     }
@@ -283,18 +271,14 @@ public class NewIncidence extends AppCompatActivity {
     private void nuevaLocalizacion(){
 
         LocationRequest gpsPregunta = new LocationRequest();
-
         //para que la aplicacion cargue con la mayor certeza posible
         gpsPregunta.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
         //estas dos lineas especifican cada cuanto se va a refresh la
         //localizacion del usuario
         gpsPregunta.setInterval(0);
         gpsPregunta.setFastestInterval(0);
-
         //esta linea inabilita la trazabilidad del usuario en tiempo real
         gpsPregunta.setNumUpdates(1);
-
         gpsCliente = LocationServices.getFusedLocationProviderClient(this);
         gpsCliente.requestLocationUpdates(
                 gpsPregunta, gpsRespuesta,
@@ -347,7 +331,6 @@ public class NewIncidence extends AppCompatActivity {
         if (checkPermissions()) {
             getLastLocation();
         }
-
     }
 
 

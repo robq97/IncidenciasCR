@@ -1,7 +1,6 @@
 package com.project.incidenciascr;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,12 +28,10 @@ public class AccountActivation extends AppCompatActivity {
                 if(!pass.isEmpty()){
                     openNewIncidence();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Por favor ingrese su codigo", Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(), "Por favor ingrese el código enviado a su email", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     }
 
     public void openNewIncidence(){

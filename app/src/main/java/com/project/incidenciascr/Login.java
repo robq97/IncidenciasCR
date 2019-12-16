@@ -1,7 +1,6 @@
 package com.project.incidenciascr;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import android.database.Cursor;
@@ -18,12 +16,8 @@ import android.database.Cursor;
 
 public class Login extends AppCompatActivity {
 
-    private Button btnNuevaCuenta, btnIngresar;
-    private EditText email, password;
-
-    private EditText input_email, input_password;
-
-    private Button btn_ingresar;
+    private Button btnNuevaCuenta, btnIngresar, btn_ingresar;
+    private EditText email, password , input_email, input_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +30,6 @@ public class Login extends AppCompatActivity {
         btnIngresar = (Button)findViewById(R.id.btn_ingresar);
         input_email = (EditText) findViewById(R.id.input_email);
         input_password = (EditText) findViewById(R.id.input_password);
-
-        input_email = (EditText) findViewById(R.id.input_email);
-        input_password = (EditText) findViewById(R.id.input_password);
-
         btn_ingresar = (Button) findViewById(R.id.btn_ingresar);
 
         btn_ingresar.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +38,6 @@ public class Login extends AppCompatActivity {
                 logInCheckBD(view);
             }
         });
-
-
 
         btnNuevaCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,12 +113,10 @@ public class Login extends AppCompatActivity {
                 } else {
                     return false;
                 }
-
             } else {
                 Toast.makeText(this, "Debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
                 return false;
             }
-
         } catch (Exception ex) {
             return false;
         }

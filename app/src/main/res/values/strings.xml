@@ -95,6 +95,7 @@
     <string name="txt_entidad">Entidad</string>
     <string name="txt_detalle">Detalle</string>
     <string name="txt_agregar_imagen">Agregar imagen</string>
+    <string name="txt_agregar_nueva_incidencia">Agregar nueva incidencia</string>
 
     <string-array name="Categoria">
         <item>Carretera</item>

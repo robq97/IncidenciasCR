@@ -10,7 +10,6 @@ import android.widget.Button;
 public class Menu extends AppCompatActivity {
 
     private Button button;
-    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,6 @@ public class Menu extends AppCompatActivity {
                 openUpdateIncidence();
             }
         });
-
-
     }
 
     public void openActivation(){

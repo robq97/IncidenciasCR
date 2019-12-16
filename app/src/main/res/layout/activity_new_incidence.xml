@@ -277,8 +277,8 @@
                 android:layout_width="283dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/btn_redondo_orange"
                 android:text="@string/txt_agregar_imagen"
                 android:textColor="@android:color/white" />
@@ -294,10 +294,10 @@
                 android:layout_width="283dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/btn_redondo_orange"
-                android:text="Nueva incidencia"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_redondo_light"
+                android:text="@string/txt_agregar_nueva_incidencia"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
