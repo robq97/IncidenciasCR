@@ -127,6 +127,19 @@ public class NewAccount extends AppCompatActivity {
         }
     }
 
+    private boolean passwordCheck(){
+        String password = input_password_nueva_cuenta.getText().toString();
+        String passwordConfirmation = input_password_nueva_cuenta_confirmacion.getText().toString();
+        if (password.length() >= 8 && passwordConfirmation.length() >= 8) {
+            return true;
+        }else{
+            Toast.makeText(this, "La contraseña debe de contener mínimo 8 caracteres.", Toast.LENGTH_LONG).show();
+            input_password_nueva_cuenta.setText("");
+            input_password_nueva_cuenta_confirmacion.setText("");
+            return false;
+        }
+    }
+
     private void nuevaCuenta(View v) {
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
         SQLiteDatabase bd = cnn.getWritableDatabase();
@@ -146,52 +159,43 @@ public class NewAccount extends AppCompatActivity {
                     if (phoneCheck()){
                         //valida si se ingresa un numero de cedula valido
                         if (identificationCheck()){
-                            //validar si contraseñas en blanco, y luego si son iguales
-                            if(!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
-                                if(passwordMatch()) {
+                            //validar si contraseñas en blanco, si son iguales, y minimo de 8 caracteres
+                            if (passwordCheck()) {
+                                if(!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
+                                    if(passwordMatch()) {
+                                        valores.put("nombre", input_nombre.getText().toString());
+                                        valores.put("primer_apellido", input_primer_apellido.getText().toString());
+                                        valores.put("segundo_apellido", input_segundo_apellido.getText().toString());
+                                        valores.put("cedula", input_cedula.getText().toString());
+                                        valores.put("tel_cel", input_tel_cel.getText().toString());
+                                        valores.put("correo_electronico", input_email.getText().toString());
+                                        valores.put("clave", input_password_nueva_cuenta.getText().toString());
+                                        valores.put("provincia", spinner_provincias.getSelectedItem().toString());
+                                        valores.put("canton", spinner_cantones.getSelectedItem().toString());
+                                        valores.put("distrito", spinner_distritos.getSelectedItem().toString());
+                                        if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
+                                            valores.put("direccion", txt_direccion.getText().toString());
+                                        }
 
-                                    valores.put("nombre", input_nombre.getText().toString());
-                                    valores.put("primer_apellido", input_primer_apellido.getText().toString());
-                                    valores.put("segundo_apellido", input_segundo_apellido.getText().toString());
-                                    valores.put("cedula", input_cedula.getText().toString());
-                                    valores.put("tel_cel", input_tel_cel.getText().toString());
-                                    valores.put("correo_electronico", input_email.getText().toString());
-                                    valores.put("clave", input_password_nueva_cuenta.getText().toString());
+                                        bd.insert("Cuenta", null, valores);
+                                        bd.close();
 
-                                    valores.put("provincia", spinner_provincias.getSelectedItem().toString());
-                                    valores.put("canton", spinner_cantones.getSelectedItem().toString());
-                                    valores.put("distrito", spinner_distritos.getSelectedItem().toString());
-
-                                    if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
-                                        valores.put("direccion", txt_direccion.getText().toString());
+                                        Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
+                                        dialogBox();
+                                    } else {
+                                        Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_LONG).show();
+                                        input_password_nueva_cuenta.setText("");
+                                        input_password_nueva_cuenta_confirmacion.setText("");
                                     }
-
-                                    bd.insert("Cuenta", null, valores);
-
-                                    bd.close();
-
-                                    Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
-                                    dialogBox();
-                                } else {
-                                    Toast.makeText(this, "Contraseñas no coinciden.", Toast.LENGTH_LONG).show();
-                                    input_password_nueva_cuenta.setText("");
-                                    input_password_nueva_cuenta_confirmacion.setText("");
                                 }
+
                             }
                         }
                     }
                 }
-
             }else {
                 Toast.makeText(this, "A excepción de su dirección, debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
             }
-            /*
-            input_nombre.setText("");
-            input_primer_apellido.setText("");
-            input_segundo_apellido.setText("");
-            txt_direccion.setText("");
-
-             */
         }
         catch (Exception ex) {
 
