@@ -210,7 +210,7 @@
                     android:text="Longitud"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/lonTextView"
-                    app:layout_constraintHorizontal_bias="0.701"
+                    app:layout_constraintHorizontal_bias="0.721"
                     app:layout_constraintStart_toEndOf="@+id/latTextView"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.545" />
@@ -222,7 +222,7 @@
                     android:text="Latitud: "
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/latTextView"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.695"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.545" />
@@ -237,7 +237,7 @@
                     android:text="latitud:  "
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/lonTextView"
-                    app:layout_constraintHorizontal_bias="0.038"
+                    app:layout_constraintHorizontal_bias="0.008"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
@@ -255,6 +255,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/btn_map"
+                    android:layout_width="46dp"
+                    android:layout_height="39dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:padding="1dp"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.985"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/map_icon" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
@@ -284,12 +299,6 @@
                 android:background="@drawable/btn_redondo_orange"
                 android:text="Nueva incidencia"
                 android:textColor="@android:color/white" />
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
-                android:layout_width="match_parent"
-                android:layout_height="254dp"
-                android:layout_marginTop="15dp" />
 
         </LinearLayout>
 

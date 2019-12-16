@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.text.TextUtils;
@@ -54,8 +55,10 @@ public class NewIncidence extends AppCompatActivity {
 
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
     ImageView imagePreview;
+    public double latitude, longitude;
     private EditText direccion, detalle;
     private Button button, btn_nva_inc;
+    private ImageButton button_map;
     private Spinner spinner_categoria, spinner_entidad, spinner_provincias,
             spinner_cantones, spinner_distritos;
     private EditText txt_direccion, input_detalle;
@@ -76,6 +79,13 @@ public class NewIncidence extends AppCompatActivity {
         btn_nva_inc = (Button) findViewById(R.id.btn_nva_inc);
         latTextView = findViewById(R.id.latTextView);
         lonTextView = findViewById(R.id.lonTextView);
+        button_map = (ImageButton) findViewById(R.id.btn_map);
+        button_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
+            }
+        });
 
         GoogleMap map;
         getLastLocation();
@@ -105,6 +115,16 @@ public class NewIncidence extends AppCompatActivity {
             }
         });
 
+        button_map.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                openMap();
+            }
+        });
+
+
+
+
         spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
         spinner_entidad = (Spinner) findViewById(R.id.spinner_entidad);
         spinner_provincias = (Spinner) findViewById(R.id.spinner_provincias);
@@ -113,6 +133,13 @@ public class NewIncidence extends AppCompatActivity {
 
         txt_direccion = (EditText) findViewById(R.id.txt_direccion);
         input_detalle = (EditText) findViewById(R.id.input_detalle);
+    }
+
+    public void openMap(){
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("Latitude", latitude);
+        intent.putExtra("Longitude", longitude);
+        startActivity(intent);
     }
 
 
@@ -235,7 +262,9 @@ public class NewIncidence extends AppCompatActivity {
                                     nuevaLocalizacion();
                                 } else {
                                     latTextView.setText(location.getLatitude()+"");
+                                    latitude = location.getLatitude();
                                     lonTextView.setText(location.getLongitude()+"");
+                                    longitude = location.getLongitude();
                                 }
                             }
                         }
