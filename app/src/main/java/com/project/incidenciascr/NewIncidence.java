@@ -208,6 +208,14 @@ public class NewIncidence extends AppCompatActivity {
                 valores.put("detalle", input_detalle.getText().toString());
             }
 
+            if(!TextUtils.isEmpty(Double.toString(longitude))) {
+                valores.put("longitud", Double.toString(longitude));
+            }
+
+            if(!TextUtils.isEmpty(Double.toString(latitude))) {
+                valores.put("latitud", Double.toString(latitude));
+            }
+
             bd.insert("Incidencia", null, valores);
 
             bd.close();

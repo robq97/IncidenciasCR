@@ -24,11 +24,11 @@ public class BDConexion extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE Cuenta(cedula int primary key, nombre text not null, primer_apellido text not null," +
                 "segundo_apellido text not null, correo_electronico text not null, tel_cel text not null, provincia text not null, canton text not null," +
-                "distrito text not null, direccion text, clave text not null)");
+                "distrito text not null, direccion text, clave text not null, codigo_correo text not null)");
 
         db.execSQL("CREATE TABLE Incidencia(id INTEGER PRIMARY KEY, categoria text not null, entidad text not null, " +
                 "provincia text not null, canton text not null, distrito text not null, direccion text," +
-                " detalle text)");
+                " detalle text, longitud text, latitud text)");
 
         /*
         db.execSQL("CREATE TABLE Cuenta_Incidencia(cedula int primary key, id_incidencia int primary key, " +

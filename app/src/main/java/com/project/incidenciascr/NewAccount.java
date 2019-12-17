@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import java.util.Random;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class NewAccount extends AppCompatActivity {
     private EditText input_nombre, input_primer_apellido, input_segundo_apellido, input_cedula, input_tel_cel, input_email,
             input_password_nueva_cuenta, input_password_nueva_cuenta_confirmacion, txt_direccion;
     private Spinner spinner_provincias, spinner_cantones, spinner_distritos;
+    private String codigo_correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +175,12 @@ public class NewAccount extends AppCompatActivity {
                                         valores.put("provincia", spinner_provincias.getSelectedItem().toString());
                                         valores.put("canton", spinner_cantones.getSelectedItem().toString());
                                         valores.put("distrito", spinner_distritos.getSelectedItem().toString());
+
+                                        int codigo_correo_int = 10000 + new Random().nextInt(90000);
+                                        codigo_correo = Integer.toString(codigo_correo_int);
+
+                                        valores.put("codigo_correo", codigo_correo);
+
                                         if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                                             valores.put("direccion", txt_direccion.getText().toString());
                                         }

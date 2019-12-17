@@ -1,8 +1,10 @@
 package com.project.incidenciascr;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import android.database.Cursor;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Login extends AppCompatActivity {
@@ -43,6 +46,8 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+
 
     private boolean emailCheck(){
         String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
