@@ -1,7 +1,6 @@
 package com.project.incidenciascr;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
@@ -14,6 +13,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Looper;
 import android.provider.Settings;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -32,10 +33,8 @@ import android.widget.Toast;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import java.io.IOException;
-import android.widget.ImageView;
-import android.widget.Gallery;
-
+import java.util.Arrays;
+import java.util.List;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -44,8 +43,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-import static android.media.MediaRecorder.VideoSource.CAMERA;
 
 public class NewIncidence extends AppCompatActivity {
 
@@ -59,7 +56,6 @@ public class NewIncidence extends AppCompatActivity {
             spinner_cantones, spinner_distritos;
     private EditText txt_direccion, input_detalle;
     FusedLocationProviderClient gpsCliente;
-    GoogleMap map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +72,12 @@ public class NewIncidence extends AppCompatActivity {
         latTextView = findViewById(R.id.latTextView);
         lonTextView = findViewById(R.id.lonTextView);
         button_map = (ImageButton) findViewById(R.id.btn_map);
+
+        spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
+        spinner_entidad = (Spinner) findViewById(R.id.spinner_entidad);
+        spinner_provincias = (Spinner) findViewById(R.id.spinner_provincias);
+        spinner_cantones = (Spinner) findViewById(R.id.spinner_cantones);
+        spinner_distritos = (Spinner) findViewById(R.id.spinner_distritos);
         button_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +105,86 @@ public class NewIncidence extends AppCompatActivity {
 
         });
 
+        final List<String> provincias = Arrays.asList(getResources().getStringArray(R.array.Provincia));
+        final List<String> canton_san_jose = Arrays.asList(getResources().getStringArray(R.array.Canton_San_Jose));
+        final List<String> canton_alajuela = Arrays.asList(getResources().getStringArray(R.array.Canton_Alajuela));
+        final List<String> canton_heredia = Arrays.asList(getResources().getStringArray(R.array.Canton_Heredia));
+        final List<String> canton_cartago = Arrays.asList(getResources().getStringArray(R.array.Canton_Cartago));
+        final List<String> canton_puntarenas = Arrays.asList(getResources().getStringArray(R.array.Canton_Puntarenas));
+        final List<String> canton_limon = Arrays.asList(getResources().getStringArray(R.array.Canton_Limon));
+        final List<String> canton_guanacaste = Arrays.asList(getResources().getStringArray(R.array.Canton_Guanacaste));
+        final List<String> distrito_acosta = Arrays.asList(getResources().getStringArray(R.array.Distrito_Acosta));
+        final List<String> distrito_alajuelita = Arrays.asList(getResources().getStringArray(R.array.Distrito_Alajuelita));
+        final List<String> distrito_san_jose = Arrays.asList(getResources().getStringArray(R.array.Distrito_San_Jose));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, provincias);
+        spinner_provincias.setAdapter(adapter);
+
+        spinner_provincias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                final String itemSelect = spinner_provincias.getSelectedItem().toString();
+                if (itemSelect.equals("San José")){
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_san_jose);
+                    spinner_cantones.setAdapter(adapter1);
+
+                    spinner_cantones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            final String itemSelect = spinner_cantones.getSelectedItem().toString();
+                            if (itemSelect.equals("San José")){
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, distrito_san_jose);
+                                spinner_distritos.setAdapter(adapter);
+                            } else if (itemSelect.equals("Alajuelita")){
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, distrito_alajuelita);
+                                spinner_distritos.setAdapter(adapter);
+                            } else if (itemSelect.equals("Acosta")) {
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, distrito_acosta);
+                                spinner_distritos.setAdapter(adapter);
+                            }
+                        }
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
+                }
+                else if (itemSelect.equals("Alajuela")){
+                    ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_alajuela);
+                    spinner_cantones.setAdapter(adapter2);
+                }
+                else if (itemSelect.equals("Heredia")){
+                    ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_heredia);
+                    spinner_cantones.setAdapter(adapter3);
+                }
+                else if (itemSelect.equals("Cartago")){
+                    ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_cartago);
+                    spinner_cantones.setAdapter(adapter4);
+                }
+                else if (itemSelect.equals("Guanacaste")){
+                    ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_guanacaste);
+                    spinner_cantones.setAdapter(adapter5);
+                }
+                else if (itemSelect.equals("Puntarenas")){
+                    ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_puntarenas);
+                    spinner_cantones.setAdapter(adapter6);
+                }
+                else if (itemSelect.equals("Limón")){
+                    ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(NewIncidence.this, R.layout.support_simple_spinner_dropdown_item, canton_limon);
+                    spinner_cantones.setAdapter(adapter7);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        ;
+
         btn_nva_inc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,12 +198,6 @@ public class NewIncidence extends AppCompatActivity {
                 openMap();
             }
         });
-
-        spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
-        spinner_entidad = (Spinner) findViewById(R.id.spinner_entidad);
-        spinner_provincias = (Spinner) findViewById(R.id.spinner_provincias);
-        spinner_cantones = (Spinner) findViewById(R.id.spinner_cantones);
-        spinner_distritos = (Spinner) findViewById(R.id.spinner_distritos);
 
         txt_direccion = (EditText) findViewById(R.id.txt_direccion);
         input_detalle = (EditText) findViewById(R.id.input_detalle);
@@ -190,6 +266,8 @@ public class NewIncidence extends AppCompatActivity {
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
         SQLiteDatabase bd = cnn.getWritableDatabase();
 
+        String cedula = ((Global) this.getApplication()).getCedula();
+
         try {
 
             ContentValues valores = new ContentValues();
@@ -199,6 +277,8 @@ public class NewIncidence extends AppCompatActivity {
             valores.put("provincia", spinner_provincias.getSelectedItem().toString());
             valores.put("canton", spinner_cantones.getSelectedItem().toString());
             valores.put("distrito", spinner_distritos.getSelectedItem().toString());
+            valores.put("cedula", cedula);
+            valores.put("estado", "Activo");
 
             if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                 valores.put("direccion", txt_direccion.getText().toString());
@@ -217,7 +297,6 @@ public class NewIncidence extends AppCompatActivity {
             }
 
             bd.insert("Incidencia", null, valores);
-
             bd.close();
 
             txt_direccion.setText("");
@@ -228,7 +307,7 @@ public class NewIncidence extends AppCompatActivity {
         }
 
         catch (Exception ex) {
-            Toast.makeText(this, "Please end my life.", Toast.LENGTH_LONG).show();
+            ex.getCause();
         }
 
     }
@@ -292,7 +371,6 @@ public class NewIncidence extends AppCompatActivity {
                 gpsPregunta, gpsRespuesta,
                 Looper.myLooper()
         );
-
     }
 
     //metodo que se invoca cuando se recibe un update en la localizacion
@@ -321,7 +399,6 @@ public class NewIncidence extends AppCompatActivity {
         );
     }
 
-
     //este metodo se encarga de recibir el permiso y determinar si sigue o no
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -340,7 +417,4 @@ public class NewIncidence extends AppCompatActivity {
             getLastLocation();
         }
     }
-
-
-
 }

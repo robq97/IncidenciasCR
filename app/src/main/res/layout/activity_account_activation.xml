@@ -53,7 +53,7 @@
             android:backgroundTint="#21070000"
             android:ems="10"
             android:hint="@string/txt_codigo"
-            android:inputType="text"
+            android:inputType="number"
             android:textColor="#61070000" />
 
         <Button

@@ -125,8 +125,7 @@
                     android:id="@+id/spinner_cantones"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_weight="1"
-                    android:entries="@array/Canton" />
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
 
@@ -152,8 +151,7 @@
                     android:id="@+id/spinner_distritos"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_weight="1"
-                    android:entries="@array/Distrito" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout

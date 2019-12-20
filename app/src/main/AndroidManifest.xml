@@ -21,7 +21,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".Global">
+
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -40,7 +42,7 @@
             android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".UpdateIncidence"
-            android:label="@string/txt_actualizar_incidencia"
+            android:label="@string/txt_actualizar_incidencia_top_bar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewIncidence"
