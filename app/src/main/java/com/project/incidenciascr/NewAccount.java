@@ -1,5 +1,8 @@
 package com.project.incidenciascr;
 
+import android.net.Uri;
+//import android.se.omapi.Session;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -15,11 +18,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import com.sun.mail.smtp.SMTPTransport;
 import java.util.Arrays;
+import java.util.Date;
+import javax.mail.Session;
+import java.util.Properties;
 import java.util.Random;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class NewAccount extends AppCompatActivity {
 
@@ -68,7 +81,7 @@ public class NewAccount extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 final String itemSelect = spinner_provincias.getSelectedItem().toString();
-                if (itemSelect.equals("San José")){
+                if (itemSelect.equals("San José")) {
                     ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_san_jose);
                     spinner_cantones.setAdapter(adapter1);
 
@@ -76,10 +89,10 @@ public class NewAccount extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             final String itemSelect = spinner_cantones.getSelectedItem().toString();
-                            if (itemSelect.equals("San José")){
+                            if (itemSelect.equals("San José")) {
                                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, distrito_san_jose);
                                 spinner_distritos.setAdapter(adapter);
-                            } else if (itemSelect.equals("Alajuelita")){
+                            } else if (itemSelect.equals("Alajuelita")) {
                                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, distrito_alajuelita);
                                 spinner_distritos.setAdapter(adapter);
                             } else if (itemSelect.equals("Acosta")) {
@@ -94,28 +107,22 @@ public class NewAccount extends AppCompatActivity {
                         }
                     });
 
-                }
-                else if (itemSelect.equals("Alajuela")){
+                } else if (itemSelect.equals("Alajuela")) {
                     ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_alajuela);
                     spinner_cantones.setAdapter(adapter2);
-                }
-                else if (itemSelect.equals("Heredia")){
+                } else if (itemSelect.equals("Heredia")) {
                     ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_heredia);
                     spinner_cantones.setAdapter(adapter3);
-                }
-                else if (itemSelect.equals("Cartago")){
+                } else if (itemSelect.equals("Cartago")) {
                     ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_cartago);
                     spinner_cantones.setAdapter(adapter4);
-                }
-                else if (itemSelect.equals("Guanacaste")){
+                } else if (itemSelect.equals("Guanacaste")) {
                     ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_guanacaste);
                     spinner_cantones.setAdapter(adapter5);
-                }
-                else if (itemSelect.equals("Puntarenas")){
+                } else if (itemSelect.equals("Puntarenas")) {
                     ArrayAdapter<String> adapter6 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_puntarenas);
                     spinner_cantones.setAdapter(adapter6);
-                }
-                else if (itemSelect.equals("Limón")){
+                } else if (itemSelect.equals("Limón")) {
                     ArrayAdapter<String> adapter7 = new ArrayAdapter<String>(NewAccount.this, R.layout.support_simple_spinner_dropdown_item, canton_limon);
                     spinner_cantones.setAdapter(adapter7);
                 }
@@ -127,7 +134,7 @@ public class NewAccount extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nuevaCuenta(v);
@@ -150,39 +157,39 @@ public class NewAccount extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void openMenu(){
+    public void openMenu() {
         Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }
 
     private boolean passwordMatch() {
-        if(input_password_nueva_cuenta.getText().toString().equals(input_password_nueva_cuenta_confirmacion.getText().toString())) {
+        if (input_password_nueva_cuenta.getText().toString().equals(input_password_nueva_cuenta_confirmacion.getText().toString())) {
             return true;
         } else {
             return false;
         }
     }
 
-    private boolean emailCheck(){
-            String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+";
-            Matcher verifica = Pattern.compile(verificaEmail).matcher(input_email.getText().toString());
-            if (!verifica.matches()){
-                Toast.makeText(getApplicationContext(), "Por favor ingrese un correo electronico valido", Toast.LENGTH_LONG).show();
-                input_email.setText("");
-                return false;
-            } else {
-                return true;
-            }
+    private boolean emailCheck() {
+        String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+";
+        Matcher verifica = Pattern.compile(verificaEmail).matcher(input_email.getText().toString());
+        if (!verifica.matches()) {
+            Toast.makeText(getApplicationContext(), "Por favor ingrese un correo electronico valido", Toast.LENGTH_LONG).show();
+            input_email.setText("");
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    private boolean phoneCheck(){
+    private boolean phoneCheck() {
         String phone = input_tel_cel.getText().toString();
         char first = phone.charAt(0);
-        if (phone.length() == 8){
-            if (first == '2' || first == '6' || first == '7'|| first == '8'|| first == '5'){
+        if (phone.length() == 8) {
+            if (first == '2' || first == '6' || first == '7' || first == '8' || first == '5') {
                 return true;
             } else {
                 Toast.makeText(getApplicationContext(), "Por favor ingrese un número de teléfono valido.", Toast.LENGTH_LONG).show();
@@ -196,23 +203,23 @@ public class NewAccount extends AppCompatActivity {
         }
     }
 
-    private boolean identificationCheck(){
-        String cedula =  input_cedula.getText().toString();
-        if (cedula.length() == 9){
+    private boolean identificationCheck() {
+        String cedula = input_cedula.getText().toString();
+        if (cedula.length() == 9) {
             return true;
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), "Por favor ingrese un número de cédula valido.", Toast.LENGTH_LONG).show();
             input_cedula.setText("");
             return false;
         }
     }
 
-    private boolean passwordCheck(){
+    private boolean passwordCheck() {
         String password = input_password_nueva_cuenta.getText().toString();
         String passwordConfirmation = input_password_nueva_cuenta_confirmacion.getText().toString();
         if (password.length() >= 8 && passwordConfirmation.length() >= 8) {
             return true;
-        }else{
+        } else {
             Toast.makeText(this, "La contraseña debe de contener mínimo 8 caracteres.", Toast.LENGTH_LONG).show();
             input_password_nueva_cuenta.setText("");
             input_password_nueva_cuenta_confirmacion.setText("");
@@ -227,22 +234,22 @@ public class NewAccount extends AppCompatActivity {
 
         try {
             //validar campos en blanco
-            if(!TextUtils.isEmpty(input_nombre.getText().toString()) ||
+            if (!TextUtils.isEmpty(input_nombre.getText().toString()) ||
                     !TextUtils.isEmpty(input_primer_apellido.getText().toString()) ||
                     !TextUtils.isEmpty(input_segundo_apellido.getText().toString()) ||
                     !TextUtils.isEmpty(input_cedula.getText().toString()) ||
                     !TextUtils.isEmpty(input_tel_cel.getText().toString())
             ) {
                 //valida si el email es valido
-                if (emailCheck()){
+                if (emailCheck()) {
                     //valida si el tel/cel es valido
-                    if (phoneCheck()){
+                    if (phoneCheck()) {
                         //valida si se ingresa un numero de cedula valido
-                        if (identificationCheck()){
+                        if (identificationCheck()) {
                             //validar si contraseñas en blanco, si son iguales, y minimo de 8 caracteres
                             if (passwordCheck()) {
-                                if(!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
-                                    if(passwordMatch()) {
+                                if (!TextUtils.isEmpty(input_password_nueva_cuenta.getText().toString()) || !TextUtils.isEmpty(input_password_nueva_cuenta_confirmacion.getText().toString())) {
+                                    if (passwordMatch()) {
                                         int codigo_correo_int = 10000 + new Random().nextInt(90000);
                                         codigo_correo = Integer.toString(codigo_correo_int);
 
@@ -258,13 +265,14 @@ public class NewAccount extends AppCompatActivity {
                                         valores.put("distrito", spinner_distritos.getSelectedItem().toString());
                                         valores.put("codigo_correo", codigo_correo);
 
-                                        if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
+                                        if (!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                                             valores.put("direccion", txt_direccion.getText().toString());
                                         }
                                         bd.insert("Cuenta", null, valores);
                                         bd.close();
 
                                         Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
+                                        sendMail();
                                         dialogBox();
                                     } else {
                                         Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_LONG).show();
@@ -276,13 +284,25 @@ public class NewAccount extends AppCompatActivity {
                         }
                     }
                 }
-            }else {
+            } else {
                 Toast.makeText(this, "A excepción de su dirección, debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
 
         }
     }
-
+    
+    public void sendMail() throws MessagingException {
+        String codigoActivacion = "Código de Activación - IncidenciasCR";
+        String mensaje = "Gracias por registrarse con IncidenciasCR, su código de activación es: " + codigo_correo.toString()
+                + ", este le será solicitado cuando intente agregar una incidencia.";
+        Email email = new Email(this, input_email.getText().toString(), codigoActivacion, mensaje);
+        email.execute();
+    }
 }
+
+
+
+
+
+
