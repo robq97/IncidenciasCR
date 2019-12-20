@@ -68,7 +68,7 @@
             android:layout_height="73dp"
             android:layout_marginTop="35dp"
             android:background="@drawable/btn_redondo_orange"
-            android:enabled="false"
+            android:enabled="true"
             android:text="@string/txt_cerrar_sesion"
             android:textAllCaps="false"
             android:textColor="#FCFCFC"
