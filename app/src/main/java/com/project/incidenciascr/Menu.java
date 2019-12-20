@@ -17,12 +17,22 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         button = (Button) findViewById(R.id.btn_nueva_incidencia);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivation();
-            }
-        });
+
+        if (((Global) this.getApplication()).getEstadoActivacion().equals("inactivo")){
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openActivation();
+                }
+            });
+        } else {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openNewIncidence();
+                }
+            });
+        }
 
         button = (Button) findViewById(R.id.btn_actualizacion_incidencia);
         button.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +45,11 @@ public class Menu extends AppCompatActivity {
 
     public void openActivation(){
         Intent intent = new Intent(this, AccountActivation.class);
+        startActivity(intent);
+    }
+
+    public void openNewIncidence(){
+        Intent intent = new Intent(this, NewIncidence.class);
         startActivity(intent);
     }
 

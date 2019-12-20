@@ -253,6 +253,7 @@ public class NewAccount extends AppCompatActivity {
                                         int codigo_correo_int = 10000 + new Random().nextInt(90000);
                                         codigo_correo = Integer.toString(codigo_correo_int);
                                         ((Global) this.getApplication()).setCodigoActivacion(codigo_correo);
+                                        String estado = "inactivo";
 
                                         valores.put("nombre", input_nombre.getText().toString());
                                         valores.put("primer_apellido", input_primer_apellido.getText().toString());
@@ -265,8 +266,10 @@ public class NewAccount extends AppCompatActivity {
                                         valores.put("canton", spinner_cantones.getSelectedItem().toString());
                                         valores.put("distrito", spinner_distritos.getSelectedItem().toString());
                                         valores.put("codigo_correo", codigo_correo);
-                                        valores.put("estado", "inactivo");
+                                        valores.put("estado", estado);
+
                                         ((Global) this.getApplication()).setCedula(input_cedula.getText().toString());
+                                        ((Global) this.getApplication()).setEstadoActivacion(estado);
 
                                         if (!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                                             valores.put("direccion", txt_direccion.getText().toString());

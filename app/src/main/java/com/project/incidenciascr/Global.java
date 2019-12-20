@@ -6,6 +6,7 @@ public class Global extends Application {
 
     private String cedula;
     private String codigoActivacion;
+    private String estadoActivacion;
 
     public String getCedula() {
         return cedula;
@@ -21,5 +22,13 @@ public class Global extends Application {
 
     public void setCodigoActivacion(String codigoActivacion) {
         this.codigoActivacion = codigoActivacion;
+    }
+
+    public String getEstadoActivacion() {
+        return estadoActivacion;
+    }
+
+    public void setEstadoActivacion(String estadoActivacion) {
+        this.estadoActivacion = estadoActivacion;
     }
 }

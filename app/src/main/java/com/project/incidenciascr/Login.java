@@ -84,6 +84,9 @@ public class Login extends AppCompatActivity {
                     if (fila.getCount() > 0){
                         fila.moveToFirst();
                         ((Global) this.getApplication()).setCedula(fila.getString(0));
+                        ((Global) this.getApplication()).setEstadoActivacion(fila.getString(12));
+                        ((Global) this.getApplication()).setCodigoActivacion(fila.getString(11));
+
                         Toast.makeText(this, "Bienvenido.", Toast.LENGTH_LONG).show();
                         openMenu();
                         input_email.setText("");
