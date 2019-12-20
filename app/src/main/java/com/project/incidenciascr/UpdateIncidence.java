@@ -14,7 +14,6 @@ import java.util.List;
 public class UpdateIncidence extends AppCompatActivity {
 
     public ListView list;
-    List<IncidenceElement> listaIncidente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -266,6 +266,8 @@ public class NewIncidence extends AppCompatActivity {
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
         SQLiteDatabase bd = cnn.getWritableDatabase();
 
+        String cedula = ((Global) this.getApplication()).getCedula();
+
         try {
 
             ContentValues valores = new ContentValues();
@@ -275,6 +277,8 @@ public class NewIncidence extends AppCompatActivity {
             valores.put("provincia", spinner_provincias.getSelectedItem().toString());
             valores.put("canton", spinner_cantones.getSelectedItem().toString());
             valores.put("distrito", spinner_distritos.getSelectedItem().toString());
+            valores.put("cedula", cedula);
+            valores.put("estado", "Activo");
 
             if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                 valores.put("direccion", txt_direccion.getText().toString());
@@ -293,7 +297,6 @@ public class NewIncidence extends AppCompatActivity {
             }
 
             bd.insert("Incidencia", null, valores);
-
             bd.close();
 
             txt_direccion.setText("");
@@ -304,7 +307,7 @@ public class NewIncidence extends AppCompatActivity {
         }
 
         catch (Exception ex) {
-            Toast.makeText(this, "Please end my life.", Toast.LENGTH_LONG).show();
+            ex.getCause();
         }
 
     }
