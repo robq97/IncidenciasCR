@@ -40,7 +40,7 @@
             android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".UpdateIncidence"
-            android:label="@string/txt_actualizar_incidencia"
+            android:label="@string/txt_actualizar_incidencia_top_bar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".NewIncidence"

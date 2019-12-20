@@ -1,58 +1,57 @@
 package com.project.incidenciascr;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomAdapter extends BaseAdapter {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-    public static LayoutInflater inflater;
-    private UpdateIncidence updIncidence;
-    private ImageView  imageView;
-    private TextView textViewNombreIncidente;
-    private TextView textViewEstadoIncidente;
+import java.util.List;
 
-    int[] img = {
-            R.drawable.email
-    };
+public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
 
-    String[] nombres= {
-            "Nombre Temp"
-    };
+    Context mCtx;
+    int resource;
+    List<IncidenceElement> listaIncidentes;
 
-    String[] desc={
-            "Desc Temp"
-    };
+    public CustomAdapter(Context mCtx, int resource, List<IncidenceElement> listaIncidentes){
+        super(mCtx, resource, listaIncidentes);
 
-    @Override
-    public int getCount() {
-        return img.length;
+        this.mCtx = mCtx;
+        this.resource = resource;
+        this.listaIncidentes = listaIncidentes;
     }
 
+    @NonNull
     @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+        View view = inflater.inflate(resource, null);
 
-    @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
-        view = inflater.inflate(R.layout.custom_layout, updIncidence.list, false);
-        //LayoutInflater.from(updIncidence).inflate(R.layout.custom_layout,null,false);
-        //imageView=(ImageView)view.findViewById(R.id.img_lista);
-        textViewNombreIncidente = (TextView)view.findViewById(R.id.txt_incidente_nombre);
-        textViewEstadoIncidente = (TextView)view.findViewById(R.id.txt_estado_lista);
+        TextView nombreIncidente = view.findViewById(R.id.txt_incidente_nombre);
+        TextView estado = view.findViewById(R.id.txt_estado_lista);
+        ImageView img = view.findViewById(R.id.img_lista);
 
-        //imageView.setImageResource(img[position]);
-        textViewNombreIncidente.setText(nombres[position]);
-        textViewEstadoIncidente.setText(desc[position]);
+        IncidenceElement incidente = listaIncidentes.get(position);
+
+        nombreIncidente.setText((incidente.getNombreIncidente()));
+        estado.setText(incidente.getEstado());
+        img.setImageDrawable(mCtx.getResources().getDrawable(incidente.getImage()));
+
+        view.findViewById(R.id.btn_desactivar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         return view;
     }
 }
