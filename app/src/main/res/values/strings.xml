@@ -38,7 +38,7 @@
     //Address
     <string name="txt_provincia">Provincia</string>
     <string-array name="Provincia">
-        <item>San Jose</item>
+        <item>San José</item>
         <item>Alajuela</item>
         <item>Cartago</item>
         <item>Heredia</item>
@@ -47,8 +47,9 @@
         <item>Limón</item>
     </string-array>
 
+    //Cantones
     <string name="txt_canton">Cantón</string>
-    <string-array name="Canton">
+    <string-array name="Canton_San_Jose">
         <item>Acosta</item>
         <item>Alajuelita</item>
         <item>Aserri</item>
@@ -68,8 +69,96 @@
         <item>Escazú</item>
     </string-array>
 
+    <string-array name="Canton_Alajuela">
+        <item>Alajuela</item>
+        <item>Atenas</item>
+        <item>Grecia</item>
+        <item>Guatuso</item>
+        <item>Los Chiles</item>
+        <item>Naranjo</item>
+        <item>Orotina</item>
+        <item>Palmares</item>
+        <item>Poás</item>
+        <item>Río Cuarto</item>
+        <item>San Carlos</item>
+        <item>San Mateo</item>
+        <item>San Ramón</item>
+        <item>Upala</item>
+        <item>Valverde Vega</item>
+        <item>Zarcero</item>
+    </string-array>
+
+    <string-array name="Canton_Heredia">
+        <item>Barva</item>
+        <item>Belén</item>
+        <item>Flores</item>
+        <item>Heredia</item>
+        <item>San Isidro</item>
+        <item>San Pablo</item>
+        <item>San Rafael</item>
+        <item>Santa Bárbara</item>
+        <item>Santo Domingo</item>
+        <item>Río Cuarto</item>
+        <item>San Carlos</item>
+        <item>San Mateo</item>
+        <item>San Ramón</item>
+        <item>Upala</item>
+        <item>Valverde Vega</item>
+        <item>Zarcero</item>
+    </string-array>
+
+    <string-array name="Canton_Cartago">
+        <item>Alvarado</item>
+        <item>Cartago</item>
+        <item>El Guarco</item>
+        <item>Jiménez</item>
+        <item>La Unión</item>
+        <item>Oreamuno</item>
+        <item>Paraíso</item>
+        <item>Turrialba</item>
+    </string-array>
+
+    <string-array name="Canton_Guanacaste">
+        <item>Abangares</item>
+        <item>Bagaces</item>
+        <item>Cañas</item>
+        <item>Carrillo</item>
+        <item>Nicoya</item>
+        <item>Hojancha</item>
+        <item>La Cruz</item>
+        <item>Liberia</item>
+        <item>Nandayure</item>
+        <item>Santa Cruz</item>
+        <item>Tilarán</item>
+    </string-array>
+
+    <string-array name="Canton_Puntarenas">
+        <item>Buenos Aires</item>
+        <item>Corredores</item>
+        <item>Coto Brus</item>
+        <item>Esparza</item>
+        <item>Garabito</item>
+        <item>Golfito</item>
+        <item>Montes de Oro</item>
+        <item>Osa</item>
+        <item>Parrita</item>
+        <item>Puntarenas</item>
+        <item>Quepos</item>
+    </string-array>
+
+    <string-array name="Canton_Limon">
+        <item>Guacimo</item>
+        <item>Limón</item>
+        <item>Matina</item>
+        <item>Pococí</item>
+        <item>Siquirres</item>
+        <item>Talamanca</item>
+    </string-array>
+
+
+    //Distritos
     <string name="txt_distrito">Distrito</string>
-    <string-array name="Distrito">
+    <string-array name="Distrito_San_Jose">
         <item>Carmen</item>
         <item>Merced</item>
         <item>Hospital</item>
@@ -77,6 +166,28 @@
         <item>Zapote</item>
         <item>La Uruca</item>
         <item>Pavas</item>
+        <item>San Sebastian</item>
+        <item>San Miguel</item>
+    </string-array>
+
+    <string-array name="Distrito_Acosta">
+        <item>San Ignacio</item>
+        <item>Guaitil</item>
+        <item>Palmichal</item>
+        <item>Cangrejal</item>
+        <item>Sabanillas</item>
+        <item>La Uruca</item>
+        <item>Pavas</item>
+        <item>San Sebastian</item>
+        <item>San Miguel</item>
+    </string-array>
+
+    <string-array name="Distrito_Alajuelita">
+        <item>Alajuelita</item>
+        <item>San Josesito</item>
+        <item>San Antonio</item>
+        <item>Concepción</item>
+        <item>San Felipe</item>
     </string-array>
 
 
