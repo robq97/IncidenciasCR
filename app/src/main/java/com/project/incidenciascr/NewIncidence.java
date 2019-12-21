@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Looper;
@@ -35,6 +36,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -56,14 +59,15 @@ public class NewIncidence extends AppCompatActivity {
             spinner_cantones, spinner_distritos;
     private EditText txt_direccion, input_detalle;
     FusedLocationProviderClient gpsCliente;
+    private static final int PICK_IMAGE = 100;
+    //private int number;
+    //SQLiteDatabase bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gpsCliente = LocationServices.getFusedLocationProviderClient(this);
-
         setContentView(R.layout.activity_new_incidence);
-
         imagePreview = (ImageView) findViewById(R.id.img_preview);
         button = (Button) findViewById(R.id.btn_agregar_img);
         direccion = (EditText)findViewById(R.id.txt_direccion);
@@ -72,7 +76,6 @@ public class NewIncidence extends AppCompatActivity {
         latTextView = findViewById(R.id.latTextView);
         lonTextView = findViewById(R.id.lonTextView);
         button_map = (ImageButton) findViewById(R.id.btn_map);
-
         spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
         spinner_entidad = (Spinner) findViewById(R.id.spinner_entidad);
         spinner_provincias = (Spinner) findViewById(R.id.spinner_provincias);
@@ -182,12 +185,14 @@ public class NewIncidence extends AppCompatActivity {
             }
         });
 
-
-        ;
-
         btn_nva_inc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*Intent intent = new Intent(Intent.ACTION_PICK, Uri.parse(
+                   "content://media/internal/images/media"
+                ));
+                startActivityForResult(intent, PICK_IMAGE);
+                */
                 agregarIncidencia(v);
             }
         });
@@ -198,7 +203,6 @@ public class NewIncidence extends AppCompatActivity {
                 openMap();
             }
         });
-
         txt_direccion = (EditText) findViewById(R.id.txt_direccion);
         input_detalle = (EditText) findViewById(R.id.input_detalle);
     }
@@ -246,10 +250,11 @@ public class NewIncidence extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        BDConexion cnn = new BDConexion(this, "Admin", null, 1);
+        SQLiteDatabase bd = cnn.getWritableDatabase();
 
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-
             if (requestCode == REQUEST_CAMERA) {
                 Bundle bundle = data.getExtras();
                 final Bitmap bmp = (Bitmap) bundle.get("data");
@@ -258,9 +263,31 @@ public class NewIncidence extends AppCompatActivity {
             } else if (requestCode == SELECT_FILE) {
                 Uri selectedImageUrl = data.getData();
                 imagePreview.setImageURI(selectedImageUrl);
+                /*String x = getPath(selectedImageUrl);
+                Integer num = number;
+
+                if (cnn.insertImage(x, num)){
+                    Toast.makeText(getApplicationContext(), "Exito", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "No sirve", Toast.LENGTH_SHORT).show();
+                }*/
             }
         }
     }
+
+    public String getPath(Uri uri){
+        if (uri == null) return null;
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        if (cursor!=null){
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        return uri.getPath();
+    }
+
 
     private void agregarIncidencia(View v) {
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
@@ -283,34 +310,27 @@ public class NewIncidence extends AppCompatActivity {
             if(!TextUtils.isEmpty(txt_direccion.getText().toString())) {
                 valores.put("direccion", txt_direccion.getText().toString());
             }
-
             if(!TextUtils.isEmpty(input_detalle.getText().toString())) {
                 valores.put("detalle", input_detalle.getText().toString());
             }
-
             if(!TextUtils.isEmpty(Double.toString(longitude))) {
                 valores.put("longitud", Double.toString(longitude));
             }
-
             if(!TextUtils.isEmpty(Double.toString(latitude))) {
                 valores.put("latitud", Double.toString(latitude));
             }
-
             bd.insert("Incidencia", null, valores);
             bd.close();
 
             txt_direccion.setText("");
             input_detalle.setText("");
-
             Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
             openMenu();
-
         }
 
         catch (Exception ex) {
             ex.getCause();
         }
-
     }
 
     private TextView latTextView, lonTextView;
@@ -357,7 +377,6 @@ public class NewIncidence extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     private void nuevaLocalizacion(){
-
         LocationRequest gpsPregunta = new LocationRequest();
         //para que la aplicacion cargue con la mayor certeza posible
         gpsPregunta.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);

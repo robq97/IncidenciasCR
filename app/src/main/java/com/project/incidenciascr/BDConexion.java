@@ -1,8 +1,13 @@
 package com.project.incidenciascr;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static android.database.sqlite.SQLiteDatabase.*;
 
@@ -41,6 +46,24 @@ public class BDConexion extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public Boolean insertImage(String x, Integer i){
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            FileInputStream fs = new FileInputStream((x));
+            byte[] imgByte = new byte[fs.available()];
+            fs.read(imgByte);
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("id", i);
+            contentValues.put("img", imgByte);
+            db.insert("Incidencia", null, contentValues);
+            fs.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

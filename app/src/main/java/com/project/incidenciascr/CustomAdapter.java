@@ -72,7 +72,7 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    bd.execSQL("UPDATE Incidencia SET estado='Resuelta'");
+                    bd.execSQL("UPDATE Incidencia SET estado='Resuelto'");
 
                     //String query = ("UPDATE Incidencia SET estado = 'hola'");
                    // Cursor fila = bd.rawQuery(query, null);
