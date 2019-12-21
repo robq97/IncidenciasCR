@@ -40,9 +40,10 @@ public class UpdateIncidence extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             do {
                 IncidenceElement incidente = new IncidenceElement(
-                        R.drawable.email,
+                        R.drawable.signal,
                         cursor.getString(1),
-                        cursor.getString(10));
+                        cursor.getString(10),
+                        cursor.getString(7));
                 listaIncidente.add(incidente);
             } while (cursor.moveToNext());
         }

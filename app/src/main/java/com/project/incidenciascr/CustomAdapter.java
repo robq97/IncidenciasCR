@@ -2,8 +2,10 @@ package com.project.incidenciascr;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
@@ -40,13 +44,14 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
         TextView nombreIncidente = view.findViewById(R.id.txt_incidente_nombre);
         TextView estado = view.findViewById(R.id.txt_estado_lista);
         ImageView img = view.findViewById(R.id.img_lista);
+        TextView detalle = view.findViewById(R.id.txt_detalle);
 
         IncidenceElement incidente = listaIncidentes.get(position);
 
         nombreIncidente.setText((incidente.getNombreIncidente()));
         estado.setText(incidente.getEstado());
         img.setImageDrawable(mCtx.getResources().getDrawable(incidente.getImage()));
-
+        detalle.setText((incidente.getDetalle()));
         view.findViewById(R.id.btn_desactivar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,9 +62,9 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
         return view;
     }
 
-    private void changeIncidenceState(int i){
+    private void changeIncidenceState(final int i){
 
-        BDConexion cnn = new BDConexion( this.mCtx,"Admin", null, 1);
+        final BDConexion cnn = new BDConexion( this.mCtx,"Admin", null, 1);
         final SQLiteDatabase bd = cnn.getWritableDatabase();
         AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
         builder.setTitle("¿Desea cambiar el estado de esta incidencia a inactiva?");
@@ -67,10 +72,12 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    String query = ("UPDATE Incidencia SET estado = 'activo'");
-                    Cursor fila = bd.rawQuery(query, null);
-                    fila.moveToFirst();
-                    fila.close();
+                    bd.execSQL("UPDATE Incidencia SET estado='Resuelta'");
+
+                    //String query = ("UPDATE Incidencia SET estado = 'hola'");
+                   // Cursor fila = bd.rawQuery(query, null);
+                    //fila.close();
+
                 } catch (Exception ex){
                     ex.getCause();
                 }
@@ -85,4 +92,7 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
+
 }

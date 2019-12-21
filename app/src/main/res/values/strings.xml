@@ -238,6 +238,7 @@
     <string name="btn_incidencia_resuelta">Marcar como resuelta</string>
     <string name="txt_estado">Estado:</string>
     <string name="txt_categoria_titulo">Categoria:</string>
+    <string name="txt_detalle_titulo">Detalle:</string>
 
 
     //Logout
