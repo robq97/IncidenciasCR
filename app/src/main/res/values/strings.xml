@@ -214,12 +214,17 @@
         <item>Señalizacion</item>
         <item>Obstrucción</item>
         <item>Acceso bloqueado</item>
+        <item>Servicio Público</item>
+        <item>Servicio Privado</item>
     </string-array>
 
     <string-array name="Entidad">
         <item>Municipalidad</item>
         <item>Gubernamental</item>
         <item>Cantón</item>
+        <item>Privada</item>
+        <item>ICE</item>
+        <item>AyA</item>
         <item>Privada</item>
         <item>Otra</item>
     </string-array>
