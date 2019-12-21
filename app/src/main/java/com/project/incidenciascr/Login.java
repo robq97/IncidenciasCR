@@ -48,11 +48,11 @@ public class Login extends AppCompatActivity {
     }
 
     private boolean emailCheck(){
-        String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
+        /*String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
                 "\\@" +
                 "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                ")+";
-        Matcher verifica = Pattern.compile(verificaEmail).matcher(input_email.getText().toString());
+                ")+";*/
+        Matcher verifica = Pattern.compile("^.+@.+\\..+$").matcher(input_email.getText().toString());
         if (!verifica.matches()){
             Toast.makeText(getApplicationContext(), "Por favor ingrese un correo electronico valido", Toast.LENGTH_LONG).show();
             return false;
