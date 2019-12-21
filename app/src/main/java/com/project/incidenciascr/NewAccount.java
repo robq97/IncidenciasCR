@@ -1,5 +1,6 @@
 package com.project.incidenciascr;
 
+import android.database.Cursor;
 import android.net.Uri;
 //import android.se.omapi.Session;
 import android.util.Log;
@@ -172,10 +173,25 @@ public class NewAccount extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Por favor ingrese un correo electronico valido", Toast.LENGTH_LONG).show();
             input_email.setText("");
             return false;
-        } else {
+        } else if (!emailDBCheck()){
+            Toast.makeText(getApplicationContext(), "Este correo ya fué utilizado.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+            else {
             return true;
         }
     }
+
+    private boolean emailDBCheck(){
+        BDConexion cnn = new BDConexion(this, "Admin", null, 1);
+        SQLiteDatabase bd = cnn.getWritableDatabase();
+        String correo = input_email.getText().toString();
+        Cursor fila = bd.rawQuery("SELECT * FROM Cuenta WHERE correo_electronico = ? ", new String[] {correo});
+        if (fila.getCount() > 0){
+            return false;
+        }
+        return true;
+    };
 
     private boolean phoneCheck() {
         String phone = input_tel_cel.getText().toString();
@@ -198,13 +214,29 @@ public class NewAccount extends AppCompatActivity {
     private boolean identificationCheck() {
         String cedula = input_cedula.getText().toString();
         if (cedula.length() == 9) {
-            return true;
+            if (!identificationDBCheck()){
+                Toast.makeText(getApplicationContext(), "Esta cédula ya fué utilizada.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else return true;
         } else {
             Toast.makeText(getApplicationContext(), "Por favor ingrese un número de cédula valido.", Toast.LENGTH_LONG).show();
             input_cedula.setText("");
             return false;
         }
     }
+
+    private boolean identificationDBCheck(){
+        BDConexion cnn = new BDConexion(this, "Admin", null, 1);
+        SQLiteDatabase bd = cnn.getWritableDatabase();
+        String cedula = input_cedula.getText().toString();
+        Cursor fila = bd.rawQuery("SELECT * FROM Cuenta WHERE cedula = ? ", new String[] {cedula});
+        if (fila.getCount() > 0){
+            return false;
+        }
+        return true;
+    };
+
 
     private boolean passwordCheck() {
         String password = input_password_nueva_cuenta.getText().toString();
