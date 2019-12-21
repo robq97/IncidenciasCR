@@ -23,7 +23,7 @@ public class UpdateIncidence extends AppCompatActivity {
 
         listaIncidente.add(new IncidenceElement(R.drawable.email, "prueba", "activo"));
         listaIncidente.add(new IncidenceElement(R.drawable.map_icon, "prueba2", "activo2"));
-*/
+        */
         list = (ListView)findViewById(R.id.list_incidentes);
 
         CustomAdapter customAdapter = new CustomAdapter(this, R.layout.custom_layout, listaIncidente());
@@ -31,12 +31,12 @@ public class UpdateIncidence extends AppCompatActivity {
     }
 
     public List<IncidenceElement> listaIncidente() {
+        String cedula = ((Global) this.getApplication()).getCedula();
         List<IncidenceElement> listaIncidente = new ArrayList<>();
         BDConexion cnn = new BDConexion(this, "Admin", null, 1);
         SQLiteDatabase db = cnn.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM Incidencia", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Incidencia WHERE cedula = ?", new String[] {cedula});
 
-        // Looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 IncidenceElement incidente = new IncidenceElement(

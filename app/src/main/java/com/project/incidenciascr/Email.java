@@ -3,7 +3,6 @@ package com.project.incidenciascr;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -33,7 +32,7 @@ public class Email extends AsyncTask<Void,Void,Void>  {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        mProgressDialog = ProgressDialog.show(mContext,"Sending message", "Please wait...",false,false);
+        mProgressDialog = ProgressDialog.show(mContext,"Enviando mensaje", "Por favor espere...",false,false);
     }
 
     @Override
@@ -61,7 +60,6 @@ public class Email extends AsyncTask<Void,Void,Void>  {
 
         try {
             MimeMessage mm = new MimeMessage(mSession);
-
             mm.setFrom(new InternetAddress("grupoe099@gmail.com"));
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress(mEmail));
             mm.setSubject(mSubject);

@@ -47,8 +47,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-
-
     private boolean emailCheck(){
         String verificaEmail = "[a-zA-Z0-9\\+\\@\\-\\+]{1,256}"+
                 "\\@" +

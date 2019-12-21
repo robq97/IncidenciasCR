@@ -27,7 +27,6 @@ public class AccountActivation extends AppCompatActivity {
         final String codigoGuardado = ((Global) this.getApplication()).getCodigoActivacion();
         final String cedula = ((Global) this.getApplication()).getCedula();
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +47,6 @@ public class AccountActivation extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Código invalido.", Toast.LENGTH_LONG).show();
                     }
-
                 }else{
                     Toast.makeText(getApplicationContext(), "Por favor ingrese el código enviado a su email", Toast.LENGTH_LONG).show();
                 }

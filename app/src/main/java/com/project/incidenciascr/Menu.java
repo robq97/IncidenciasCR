@@ -75,4 +75,10 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void onBackPressed() {
+        // super.onBackPressed(); commented this line in order to disable back press
+        //Write your code here
+        Toast.makeText(getApplicationContext(), "Eliga una opción del menú.", Toast.LENGTH_SHORT).show();
+    }
 }

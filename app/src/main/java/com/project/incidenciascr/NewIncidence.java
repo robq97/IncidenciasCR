@@ -303,6 +303,7 @@ public class NewIncidence extends AppCompatActivity {
             input_detalle.setText("");
 
             Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
+            openMenu();
 
         }
 
@@ -416,5 +417,14 @@ public class NewIncidence extends AppCompatActivity {
         if (checkPermissions()) {
             getLastLocation();
         }
+    }
+
+    public void openMenu() {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void onBackPressed() {
+        openMenu();
     }
 }

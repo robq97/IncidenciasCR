@@ -226,7 +226,7 @@
 
     //Incidence update
     <string name="txt_actualizar_incidencia">Seleccione un incidente para cambiar su estado.</string>
-    <string name="txt_actualizar_incidencia_top_bar">Sus incidentes</string>
+    <string name="txt_actualizar_incidencia_top_bar">Mis incidentes</string>
     <string name="img_list">imagenLista</string>
     <string name="txt_Nombre_lista">Código</string>
     <string name="title_activity_maps">Map</string>

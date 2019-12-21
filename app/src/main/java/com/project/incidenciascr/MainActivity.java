@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         // super.onBackPressed(); commented this line in order to disable back press
         //Write your code here
-        Toast.makeText(getApplicationContext(), "Favor ingresar a la aplicacion con un usuario verificado!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Favor ingresar a la aplicacion con un usuario verificado.", Toast.LENGTH_SHORT).show();
     }
 }

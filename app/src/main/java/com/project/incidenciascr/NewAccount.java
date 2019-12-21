@@ -18,21 +18,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import com.sun.mail.smtp.SMTPTransport;
 import java.util.Arrays;
-import java.util.Date;
-import javax.mail.Session;
-import java.util.Properties;
 import java.util.Random;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+
 
 public class NewAccount extends AppCompatActivity {
 
@@ -47,6 +39,7 @@ public class NewAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
         button = (Button) findViewById(R.id.btn_confirmar);
+
         input_nombre = (EditText) findViewById(R.id.input_nombre);
         input_primer_apellido = (EditText) findViewById(R.id.input_primer_apellido);
         input_segundo_apellido = (EditText) findViewById(R.id.input_segundo_apellido);
@@ -69,7 +62,6 @@ public class NewAccount extends AppCompatActivity {
         final List<String> canton_puntarenas = Arrays.asList(getResources().getStringArray(R.array.Canton_Puntarenas));
         final List<String> canton_limon = Arrays.asList(getResources().getStringArray(R.array.Canton_Limon));
         final List<String> canton_guanacaste = Arrays.asList(getResources().getStringArray(R.array.Canton_Guanacaste));
-
         final List<String> distrito_acosta = Arrays.asList(getResources().getStringArray(R.array.Distrito_Acosta));
         final List<String> distrito_alajuelita = Arrays.asList(getResources().getStringArray(R.array.Distrito_Alajuelita));
         final List<String> distrito_san_jose = Arrays.asList(getResources().getStringArray(R.array.Distrito_San_Jose));
@@ -276,9 +268,8 @@ public class NewAccount extends AppCompatActivity {
                                         }
                                         bd.insert("Cuenta", null, valores);
                                         bd.close();
-
-                                        Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
                                         sendMail();
+                                        Toast.makeText(this, "Se agregó exitosamente.", Toast.LENGTH_LONG).show();
                                         dialogBox();
                                     } else {
                                         Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_LONG).show();
@@ -291,7 +282,7 @@ public class NewAccount extends AppCompatActivity {
                     }
                 }
             } else {
-                Toast.makeText(this, "A excepción de su dirección, debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Debe llenar todos los campos solicitados.", Toast.LENGTH_LONG).show();
             }
         } catch (Exception ex) {
 
