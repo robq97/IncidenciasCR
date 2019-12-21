@@ -1,6 +1,11 @@
 package com.project.incidenciascr;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -30,7 +35,7 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
 
         View view = inflater.inflate(resource, null);
@@ -48,10 +53,39 @@ public class CustomAdapter extends ArrayAdapter<IncidenceElement> {
         view.findViewById(R.id.btn_desactivar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                changeIncidenceState(position);
             }
         });
 
         return view;
+    }
+
+    private void changeIncidenceState(int i){
+
+        BDConexion cnn = new BDConexion( this.mCtx,"Admin", null, 1);
+        final SQLiteDatabase bd = cnn.getWritableDatabase();
+        AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
+        builder.setTitle("¿Desea cambiar el estado de esta incidencia a inactiva?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    String query = ("UPDATE Incidencia SET estado = 'activo'");
+                    Cursor fila = bd.rawQuery(query, null);
+                    fila.moveToFirst();
+                    fila.close();
+                } catch (Exception ex){
+                    ex.getCause();
+                }
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

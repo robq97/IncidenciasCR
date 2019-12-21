@@ -230,7 +230,7 @@
     <string name="img_list">imagenLista</string>
     <string name="txt_Nombre_lista">Código</string>
     <string name="title_activity_maps">Map</string>
-    <string name="btn_incidencia_resuelta">Incidencia resuelta</string>
+    <string name="btn_incidencia_resuelta">Marcar como resuelta</string>
     <string name="txt_estado">Estado:</string>
     <string name="txt_categoria_titulo">Categoria:</string>
 

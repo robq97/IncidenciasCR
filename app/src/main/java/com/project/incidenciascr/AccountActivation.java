@@ -37,7 +37,7 @@ public class AccountActivation extends AppCompatActivity {
                 if(!codigo.isEmpty()){
                     if (codigoGuardado.equals(codigo)){
                         try {
-                            String query = ("UPDATE Cuenta SET estado == 'activo' WHERE cedula = "+cedula);
+                            String query = ("UPDATE Cuenta SET estado = 'activo' WHERE cedula = "+cedula);
                             Cursor fila = bd.rawQuery(query, null);
                             fila.moveToFirst();
                             fila.close();
